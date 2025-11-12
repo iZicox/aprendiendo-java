@@ -58,9 +58,9 @@ public class Array {
 		return false;
 	}
 	
-	private static boolean esAcertado(int[] numUsuario,int[] numAleatorio) {
+	/*private static boolean esAcertado(int[] numUsuario,int[] numAleatorio) {
 		numUsuario.toString();
-	}
+	}*/
 	
 
 

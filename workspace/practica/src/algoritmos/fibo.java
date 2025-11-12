@@ -6,11 +6,9 @@ public class fibo {
 		// TODO Auto-generated method stub
 
 	}
+
+		
 	
-	private static void fibo(int n) {
-		
-		
-	}
 
 }
 
@@ -24,4 +22,4 @@ public class fibo {
 			segundo = masSiguiente;
 		}
  * */
- */
+ 
