@@ -3,65 +3,66 @@ package dificil;
 import java.util.Scanner;
 
 public class Array {
+	private static final int DIGITOS = 4;
+	private static final int[] SECRETO = new int[DIGITOS];
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		Scanner sc = new Scanner(System.in);
-		
-		int opcion;
-		do {
-			System.out.println("Ingresa un numero: ");
-			opcion = sc.nextInt();
-			if(opcion < 1 || opcion > 5) {
-				System.out.println("Ingresa un numero mayor que cero y menor o igual que 5.");
-			}
-		} while (opcion < 1 || opcion > 5);
-		
-		//generar aleatorio
-		int[] aleatorio = new int[opcion];
-		for(int i = 0; i < aleatorio.length; i++) {
-			if (aleatorio[i]==0) {
-				aleatorio[i]=generarAleatorio();
-				boolean numEsRepetido = esRepetido(i, aleatorio[i], aleatorio);
-				while(numEsRepetido) {
-					aleatorio[i]=generarAleatorio();
-					numEsRepetido = esRepetido(i, aleatorio[i], aleatorio);
+
+		for (int i = 0; i < SECRETO.length; i++) {
+			if (SECRETO[i] == 0) {
+				SECRETO[i] = generarAleatorio();
+				if (empiezaEnCero(SECRETO)) {
+					while (SECRETO[0] == 0) {
+						SECRETO[0] = generarAleatorio();
+					}
 				}
-				
-				
+				while (esRepetido(i, SECRETO[i], SECRETO)) {
+					SECRETO[i] = generarAleatorio();
+				}
 			}
 		}
-		
-		
-		
-		//verificar
-		for(int n:aleatorio) {
-			System.out.print(n );
+
+		// verificar
+		for (int n : SECRETO) {
+			System.out.print(n);
 		}
-	
-		
+
 	}
-	
+
 	private static int generarAleatorio() {
-		int n = (int)(Math.random()*10);
+		int n = (int) (Math.random() * 10);
 		return n;
 	}
-	
-	private static boolean esRepetido(int lugar,int numero,int[] numeros) {
-		for(int i = 0; i < lugar; i++) {
-			if(numero==numeros[i]) {
-				//es igual
+
+	private static boolean esRepetido(int lugar, int numero, int[] numeros) {
+		for (int i = 0; i < lugar; i++) {
+			if (numero == numeros[i]) {
+				// es igual
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	/*private static boolean esAcertado(int[] numUsuario,int[] numAleatorio) {
-		numUsuario.toString();
-	}*/
-	
 
+	private static boolean empiezaEnCero(int[] numeros) {
+		return numeros[0] == 0;
+	}
+	
+	private static int[] numUsuario(int n) {
+		int[] resultado = new int[DIGITOS];
+		for(int i = 3; i < 0; i--) {
+			resultado[i] = n % 10;
+			n = n / 10;
+		}
+		return resultado;
+	}
+
+	/*
+	 * private static boolean esAcertado(int[] numUsuario,int[] numAleatorio) {
+	 * numUsuario.toString(); }
+	 */
 
 }
