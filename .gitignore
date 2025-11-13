@@ -2,8 +2,9 @@ workspace/.metadata/
 # Ignorar carpetas dentro de workspace/practica
 workspace/*/.settings/
 workspace/*/bin/
+workspace/*/target/
 
 # Ignorar archivos específicos dentro de workspace/practica
-workspace/*/.classpath
-workspace/*/.project
+# workspace/*/.classpath
+# workspace/*/.project
 
