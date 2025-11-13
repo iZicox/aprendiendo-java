@@ -13,10 +13,10 @@ public class Array {
 		do {
 			System.out.println("Ingresa un numero: ");
 			opcion = sc.nextInt();
-			if(opcion <= 0) {
-				System.out.println("Ingresa un numero mayor que cero");
+			if(opcion < 1 || opcion > 5) {
+				System.out.println("Ingresa un numero mayor que cero y menor o igual que 5.");
 			}
-		} while (opcion < 1 && opcion >= 10);
+		} while (opcion < 1 || opcion > 5);
 		
 		//generar aleatorio
 		int[] aleatorio = new int[opcion];
