@@ -44,6 +44,7 @@ public class GuessNumber {
 	
 		System.out.printf("Tienes %d buenos.",numBuenos(usuario, SECRETO));
 
+	
 	}
 
 	//metodos
