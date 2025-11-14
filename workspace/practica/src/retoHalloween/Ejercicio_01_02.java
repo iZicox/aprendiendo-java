@@ -22,6 +22,7 @@ public class Ejercicio_01_02 {
 				  * */
 		
 		String palabra = "i yojne gnihctaw uoy";
+		
 		for(int i = 0; i < palabra.length();i++) {
 			if(palabra.charAt(i)!=' ') {
 				
