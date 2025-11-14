@@ -9,7 +9,7 @@ public class B01_VariablesYCondicionales_01 {
  * muestre sus soluciones reales. Si no existen,
 debe indicarlo.*/
 		
-		double
+		//double
 	}
 
 }
