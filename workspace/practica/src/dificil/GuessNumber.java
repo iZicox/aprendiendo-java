@@ -10,7 +10,7 @@ public class GuessNumber {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		boolean acertado = false;
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Programa para adivinar un numero de 4 digitos sin que se repita ninguno.");
@@ -35,16 +35,21 @@ public class GuessNumber {
 			}
 		}
 		
+		//mostrar numero secreto
 		for(int n:SECRETO) {
 			System.out.print(n);
 		}
 	System.out.println();
 		
-		int usuario[] = numUsuario();
-	
-		System.out.printf("Tienes %d buenos.",numBuenos(usuario, SECRETO));
-
-	
+		//iteracion hazta adivinarlo
+		while(!acertado) {
+			
+			int usuario[] = numUsuario();
+		
+			System.out.printf("Tienes %d buenos.",numBuenos(usuario, SECRETO));
+			
+			
+		}
 	}
 
 	//metodos
@@ -84,6 +89,7 @@ public class GuessNumber {
 	}
 	
 	//pedir un numero al usuario y devolverlo en forma de array
+	
 	private static int[] numUsuario() {
 		
 			System.out.print("Ingresa un numero:");
@@ -97,19 +103,17 @@ public class GuessNumber {
 	private static boolean esBueno(int usuario, int secreto) {
 		return usuario == secreto;
 	}
-	private static int numBuenos(int[] usuario, int[] secreto) {
-		int buenos = 0;
+	private static boolean[] numBuenos(int[] usuario, int[] secreto) {
+		boolean buenos[] = new boolean[DIGITOS];
+		
 		for(int i = 0; i < secreto.length; i++) {
 			if(usuario[i]==secreto[i]) {
-				buenos++;
+				buenos[i] = true;
 			}
 		}
 		return buenos;
 	}
 	
-	/*
-	 * private static boolean esAcertado(int[] numUsuario,int[] numAleatorio) {
-	 * numUsuario.toString(); }
-	 */
+	
 
 }
