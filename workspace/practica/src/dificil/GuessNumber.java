@@ -41,13 +41,37 @@ public class GuessNumber {
 		}
 	System.out.println();
 		
-		//iteracion hazta adivinarlo
+		//iteracion hasta adivinarlo
 		while(!acertado) {
+			int usuario[] = new int[DIGITOS];
+			do {
+				usuario = numUsuario();
+			}while((usuario[0]==usuario[1] 
+				|| usuario[0]==usuario[2] 
+				||usuario[0]==usuario[3]) && usuario.length!=4);
 			
-			int usuario[] = numUsuario();
-		
-			System.out.printf("Tienes %d buenos.",numBuenos(usuario, SECRETO));
+			//buenos
+			boolean[] buenos = numBuenos(usuario, SECRETO);
+			int buenosCont = 0;
 			
+			for(int i = 0; i < DIGITOS; i++) {
+				if(buenos[i]) {
+					buenosCont++;
+				}
+			}
+			
+			int regulares = regulares(usuario, SECRETO);
+			
+			
+			if(buenosCont<4 && usuario.length==4) {
+				System.out.println("Tienes " + buenosCont + " buenos.");
+				System.out.println("Tienes " + regulares + " regulares.");
+			}
+			
+			if(buenosCont==4) {
+				System.out.println("Haz acertado!!!");
+				acertado = true;
+			}
 			
 		}
 	}
@@ -112,6 +136,20 @@ public class GuessNumber {
 			}
 		}
 		return buenos;
+	}
+	
+	private static int regulares(int[] usuario, int[] secreto) {
+		int cont = 0;
+		boolean[] buenos = numBuenos(usuario, secreto);
+		for(int i = 0; i < usuario.length; i++) {
+			for(int j = 0; j < secreto.length; j++) {
+				if(usuario[i]==secreto[j] && !buenos[i]) {
+					cont++;
+				}
+			}
+		}
+		
+		return cont;
 	}
 	
 	
