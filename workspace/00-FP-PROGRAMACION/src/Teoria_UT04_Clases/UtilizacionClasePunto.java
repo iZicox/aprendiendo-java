@@ -1,4 +1,4 @@
-package Ejercicios_UT04_Clases;
+package Teoria_UT04_Clases;
 
 public class UtilizacionClasePunto {
 

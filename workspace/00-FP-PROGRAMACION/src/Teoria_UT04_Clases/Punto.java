@@ -1,4 +1,4 @@
-package Ejercicios_UT04_Clases;
+package Teoria_UT04_Clases;
 /**
  * Ejemplo clase punto
  */
@@ -7,10 +7,21 @@ package Ejercicios_UT04_Clases;
 public class Punto {
 	//atributos (siempre son privados)
 	// suelen llamarse con un sustantivo
-	int x;
-	int y;
+	private int x;
+	private int y;
 	// metodos (para acceder y modificar los atributos)
 	// suelen llamarse como un verbo
+	public Punto(int x, int y) {
+		this.x=x;
+		this.y=y;
+	}
+	public Punto(Punto xy) {
+		this.x=xy.obtenerX();
+		this.y=xy.obtenerY();
+	}
+	public Punto() {
+		
+	}
 	int obtenerX() {
 		return x;
 	}
