@@ -1,4 +1,4 @@
-package Ejercicio_03;
+package Ejercicio_05;
 
 public class Programa {
 
@@ -34,7 +34,27 @@ public class Programa {
 		mascota.jugar(10);
 
 		System.out.printf("El nuevo peso es %.2f", mascota.getPeso());
-
+		
+		System.out.println(mascota.getPosicion());
+		
+		System.out.println("******************************************************");
+		System.out.println("POSICIONES");
+		
+		mascota.tumbarse();
+		System.out.println(mascota.getPosicion());
+		System.out.println("////////////////////");
+		mascota.tumbarse();
+		System.out.println(mascota.getPosicion());
+		System.out.println("////////////////////");
+		mascota.ponerseDePie();
+		System.out.println(mascota.getPosicion());
+		System.out.println("////////////////////");
+		mascota.sentar();
+		System.out.println(mascota.getPosicion());
+		System.out.println("////////////////////");
+		mascota.sentar();
+		System.out.println(mascota.getPosicion());
+		System.out.println("////////////////////");
 	}
 
 	private static void mostrarPerro(Perro mascota) {

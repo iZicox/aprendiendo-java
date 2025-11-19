@@ -1,4 +1,4 @@
-package Ejercicio_03;
+package Ejercicio_04;
 
 public class Programa {
 
