@@ -1,5 +1,4 @@
-package Ejercicio_01;
-
+package Ejercicio_02;
 
 public class Perro {
 	private String nombre;

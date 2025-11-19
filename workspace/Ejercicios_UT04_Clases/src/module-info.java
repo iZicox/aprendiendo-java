@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Ejercicios_UT04_Clases {
+module poyectoPrueba {
 }

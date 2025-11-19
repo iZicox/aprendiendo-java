@@ -1,18 +1,27 @@
-package Ejercicio_01;
+package Ejercicio_02;
+
 public class Programa {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Perro mascota = new Perro();
-		/*mascota.setEdad(4);
-		mascota.setNombre("Firulais");
-		mascota.setPeso(10.25);
-		mascota.setPropietario("Juanito Alimaña");
-		mascota.setRaza("Doberman");*/
 		
 		mostrarPerro(mascota);
 		
 		System.out.println();
+		
+		mascota.setEdad(7);
+		mascota.setNombre("Lassie");
+		mascota.setPeso(22.62);
+		mascota.setPropietario("Martin Smith");
+		mascota.setRaza("Rough Collie");
+		
+		mostrarPerro(mascota);
+		
+		System.out.println();
+		mascota.setPropietario("Mary peterson");
+		
+		mostrarPerro(mascota);
 		
 		
 		
@@ -22,7 +31,7 @@ public class Programa {
 		System.out.printf("Nombre: %s%n",mascota.getNombre());
 		System.out.printf("Raza: %s%n",mascota.getRaza());
 		System.out.printf("Nombre del propietario: %s%n",mascota.getPropietario());
-		System.out.printf("Edad: %d%n",mascota.getEdad());
+		System.out.printf("Edad: %d años%n",mascota.getEdad());
 		System.out.printf("Peso: %.2f%n",mascota.getPeso());
 		
 	}

@@ -1,5 +1,4 @@
-package Ejercicio_01;
-
+package Ejercicio_03;
 
 public class Perro {
 	private String nombre;
@@ -38,5 +37,32 @@ public class Perro {
 	}
 	public void setPeso(double peso) {
 		this.peso = peso;
+	}
+	
+	//metodos
+	public void comer(int cantidadComida) {
+		if(cantidadComida<0){
+			cantidadComida = 0;
+			return;
+		} else if (cantidadComida>200) {
+			cantidadComida=200;
+		}
+		
+		System.out.printf("Soy %s y estoy comiendo %d gr de comida.%n",this.nombre,cantidadComida);
+		
+		setPeso(this.peso+=(((double)cantidadComida/10)/1000));
+	}
+	
+	public void jugar(int tiempo) {
+		if(tiempo < 0) {
+			tiempo=0;
+			return;
+		} else if (tiempo > 10) {
+			tiempo=10;
+		}
+		
+		System.out.printf("Soy %s y estoy jugando %d minutos.%n",this.nombre,tiempo);
+		
+		setPeso(this.peso-=(tiempo/7));
 	}
 }
