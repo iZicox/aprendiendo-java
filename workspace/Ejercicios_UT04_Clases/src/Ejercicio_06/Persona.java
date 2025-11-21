@@ -46,12 +46,13 @@ public class Persona {
 	}
 	
 	//metodos
-	public double calcularIMC() {
-		double imc = this.peso / (Math.pow((this.altura/100), 2));
-		if(imc<20) {
-			return -1;
-		} else if (imc >= 20 && imc < 25) {
+	public int calcularIMC() {
+		double alturaM = (double)(this.altura/100.0);
+		double imc = this.peso / Math.pow(alturaM, 2);
+		if (imc >= 20 && imc < 25) {
 			return 0;
+		} else if(imc<20) {
+			return -1;
 		} else {
 			return 1;
 		}
@@ -69,5 +70,13 @@ public class Persona {
 		} else {
 			System.out.println("No es un valor correcto.");
 		}
+	}
+	private String dniAleatorio() {
+		String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+		int numero = (int)(Math.random()*100000000);
+		char letra = letras.charAt(numero%23);
+		StringBuilder resultado = new StringBuilder();
+		resultado.append(numero).append(letra);
+		return resultado.toString();
 	}
 }
