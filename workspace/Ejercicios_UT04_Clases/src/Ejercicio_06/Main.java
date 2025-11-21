@@ -9,21 +9,22 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingreesa los siguientes datos");
-		System.out.println("Nombre: ");
+		System.out.print("Nombre: ");
 		String nombre = sc.next();
-		System.out.println("Edad: ");
+		System.out.print("Edad: ");
 		int edad = sc.nextInt();
-		System.out.println("DNI: ");
+		System.out.print("DNI: ");
 		String dni = sc.next();
-		System.out.println("Sexo: ");
-		
+		System.out.print("Sexo: ");
+		String sexo = sc.next();
 		System.out.println("Peso (kg): ");
-
+		double peso = sc.nextDouble();
 		System.out.println("Altura (cm): ");
-
-		Persona juan = new Persona("Juan",20,"12345678A",'H',40,175);
+		int altura = sc.nextInt();
 		
-		System.out.println(juan.calcularIMC());
+		Persona pepe = new Persona(nombre,edad,dni,sexo,peso,altura);
+		
+		
 		
 		
 	}

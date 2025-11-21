@@ -1,13 +1,13 @@
 package Ejercicio_06;
 
 public class Persona {
-	final char HOMBRE = 'H';
-	final char MUJER = 'M';
+	final String HOMBRE = "H";
+	final String MUJER = "M";
 	
 	String nombre;
 	int edad;
 	String dni;
-	char sexo;
+	String sexo;
 	double peso; //kg
 	int altura; //cm
 	
@@ -28,7 +28,7 @@ public class Persona {
 		this.peso=0;
 		this.altura=0;
 	}
-	public Persona(String dni, String nombre, int edad, char sexo) {
+	public Persona(String dni, String nombre, int edad, String sexo) {
 		this.nombre=nombre;
 		this.edad=edad;
 		this.dni=dni;
@@ -36,7 +36,7 @@ public class Persona {
 		this.peso=0;
 		this.altura=0;
 	}
-	public Persona(String nombre, int edad, String dni, char sexo, double peso, int altura) {
+	public Persona(String nombre, int edad, String dni, String sexo, double peso, int altura) {
 		this.nombre=nombre;
 		this.edad=edad;
 		this.dni=dni;
@@ -64,8 +64,8 @@ public class Persona {
 			return false;
 		}
 	}
-	public void comprobarSexo(char sexo) {
-		if(this.sexo==sexo) {
+	public void comprobarSexo(String sexo) {
+		if(this.sexo.equals(sexo)) {
 			System.out.println("Si es un valor correcto.");
 		} else {
 			System.out.println("No es un valor correcto.");
