@@ -26,6 +26,7 @@ o Método compararArea: recibe otro rectángulo, y devuelve:
 ▪ 0 si las áreas de los dos rectángulos son iguales.
 ▪ 1 si el área del rectángulo es mayor que la del rectángulo parámetro, o
 si el parámetro es null.
+
 Crear un programa principal que:
 ● Pregunte al usuario la base y altura de un rectángulo y cree un objeto con esos datos.
 ● Pregunte al usuario la base y altura para un segundo rectángulo y cree otro objeto.
@@ -38,16 +39,55 @@ o Una frase indicando cuál de los dos tiene más área.
  * */
 public class Rectangulo {
 	//atributos
-	int base;
-	int altura;
+	private int base;
+	private int altura;
 	
 	//constructores
 	public Rectangulo(int base, int altura) {
-		this.base=base;
-		this.altura=altura;
+		if (base <= 0) {
+			System.err.println("Error: La base debe ser mayor que cero.");
+			this.base=1;
+		} else {
+			this.base=base;
+		}
+		if (altura <= 0) {
+			System.err.println("Error: La altura debe ser mayor que cero.");
+			this.altura=1;
+		} else {
+			this.altura=altura;
+		}
+		
 	}
 	public Rectangulo(int lado) {
-		this.base=lado;
-		this.altura=lado;
+		if(lado <= 0) {
+			System.err.println("Error: El lado debe ser mayor que cero.");
+			this.base=1;
+		} else {
+			this.base=lado;
+			this.altura=lado;
+		}
+	}
+	
+	//metodos
+	public int perimetro() {
+		return 2*this.base+2*this.altura;
+	}
+	public int area() {
+		return this.base*this.altura;
+	}
+	public boolean EsMasAlto(Rectangulo nuevo) {
+		return this.altura > nuevo.altura;
+	}
+	public boolean EsMasAncho(Rectangulo nuevo) {
+		return this.base > nuevo.base;
+	}
+	public int comprarArea(Rectangulo nuevo) {
+		if((area()>nuevo.area()) || (nuevo == null)) {
+			return 1;
+		} else if (area()<nuevo.area()) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 }
