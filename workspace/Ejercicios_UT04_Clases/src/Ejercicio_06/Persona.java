@@ -1,41 +1,20 @@
 package Ejercicio_06;
 
 public class Persona {
+	final int PESO_X_DEFECTO=0;
+	final int ALTURA_X_DEFECTO=0;
 	final String HOMBRE = "H";
 	final String MUJER = "M";
 	
-	String nombre;
-	int edad;
-	String dni;
-	String sexo;
-	double peso; //kg
-	int altura; //cm
+	private String nombre;
+	private int edad;
+	private String dni;
+	private String sexo;
+	private double peso; //kg
+	private int altura; //cm
 	
 	//constructores
-	public Persona() {
-		this.nombre="";
-		this.edad=0;
-		this.dni=dniAleatorio();
-		this.sexo=MUJER;
-		this.peso=0;
-		this.altura=0;
-	}
-	public Persona(String dni, String nombre) {
-		this.nombre=nombre;
-		this.edad=0;
-		this.dni=dni;
-		this.sexo=MUJER;
-		this.peso=0;
-		this.altura=0;
-	}
-	public Persona(String dni, String nombre, int edad, String sexo) {
-		this.nombre=nombre;
-		this.edad=edad;
-		this.dni=dni;
-		this.sexo=sexo;
-		this.peso=0;
-		this.altura=0;
-	}
+	//con todos los atributos
 	public Persona(String nombre, int edad, String dni, String sexo, double peso, int altura) {
 		this.nombre=nombre;
 		this.edad=edad;
@@ -44,6 +23,34 @@ public class Persona {
 		this.peso=peso;
 		this.altura=altura;
 	}
+	//sin atributos
+	public Persona() {
+		this.nombre="";
+		this.edad=0;
+		this.dni=dniAleatorio();
+		this.sexo=MUJER;
+		this.peso=0;
+		this.altura=0;
+	}
+	//con dni y nombre
+	public Persona(String dni, String nombre) {
+		this.nombre=nombre;
+		this.edad=0;
+		this.dni=dni;
+		this.sexo=MUJER;
+		this.peso=0;
+		this.altura=0;
+	}
+	
+	public Persona(String dni, String nombre, int edad, String sexo) {
+		this.nombre=nombre;
+		this.edad=edad;
+		this.dni=dni;
+		this.sexo=sexo;
+		this.peso=0;
+		this.altura=0;
+	}
+
 	
 	//metodos
 	public int calcularIMC() {
