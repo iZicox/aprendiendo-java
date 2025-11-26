@@ -1,5 +1,15 @@
 package Ejercicio_06;
 
+/**
+ * Clase para gestionar pacientes de un nutricionista
+ * Almacena informacion personal basica y calcula IMC a
+ * partir de ella
+ * 
+ * @author Vespertino
+ * @version 1.0
+ * @see <a href="enforma.com">Mantante en forma con alegria</a>
+ */
+
 public class Persona {
 	final int PESO_X_DEFECTO=0;
 	final int ALTURA_X_DEFECTO=0;
@@ -15,6 +25,15 @@ public class Persona {
 	
 	//constructores
 	//con todos los atributos
+	/**
+	 * 
+	 * @param nombre contiene el nombre del paciente
+	 * @param edad edad
+	 * @param dni que aveces es aleatorio
+	 * @param sexo
+	 * @param peso
+	 * @param altura
+	 */
 	public Persona(String nombre, int edad, String dni, String sexo, double peso, int altura) {
 		this.nombre=nombre;
 		this.edad=edad;
@@ -33,6 +52,11 @@ public class Persona {
 		this.altura=0;
 	}
 	//con dni y nombre
+	/**
+	 * 
+	 * @param dni
+	 * @param nombre
+	 */
 	public Persona(String dni, String nombre) {
 		this.nombre=nombre;
 		this.edad=0;
@@ -53,6 +77,10 @@ public class Persona {
 
 	
 	//metodos
+	/**
+	 * Devuelve el imc del paciente
+	 * @return
+	 */
 	public int calcularIMC() {
 		double alturaM = (double)(this.altura/100.0);
 		double imc = this.peso / Math.pow(alturaM, 2);
@@ -71,6 +99,10 @@ public class Persona {
 			return false;
 		}
 	}
+	/**
+	 * 
+	 * @param sexo
+	 */
 	public void comprobarSexo(String sexo) {
 		if(this.sexo.equals(sexo)) {
 			System.out.println("Si es un valor correcto.");
