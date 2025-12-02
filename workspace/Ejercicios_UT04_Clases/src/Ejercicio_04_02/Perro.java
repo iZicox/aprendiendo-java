@@ -1,4 +1,4 @@
-package Ejercicio_04;
+package Ejercicio_04_02;
 
 public class Perro {
 	public static final EstadoPerro SENTADO = EstadoPerro.SENTADO;

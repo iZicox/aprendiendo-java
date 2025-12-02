@@ -1,16 +1,18 @@
 package Ejercicio_05;
 
+import Ejercicio_04_02.EstadoPerro;
+
 public class Perro {
-	public static final String SENTADO="Sentado";
-	public static final String DE_PIE="De pie";
-	public static final String TUMBADO="Tumbado";
+	public static final EstadoPerro SENTADO = EstadoPerro.SENTADO;
+	public static final EstadoPerro DE_PIE = EstadoPerro.DE_PIE;
+	public static final EstadoPerro TUMPADO = EstadoPerro.TUMBADO;
 	
 	private String nombre;
 	private String raza;
 	private String propietario;
 	private int edad;
 	private double peso;
-	private String posicion;
+	private EstadoPerro posicion;
 	
 	//constructor
 	public Perro() {
@@ -56,7 +58,7 @@ public class Perro {
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	public String getPosicion() {
+	public EstadoPerro getPosicion() {
 		return posicion;
 	}
 	
@@ -107,8 +109,8 @@ public class Perro {
 	
 	public void tumbarse() {
 		if(getPosicion().equals(SENTADO)) {
-			this.posicion=TUMBADO;
-		} else if (getPosicion().equals(TUMBADO)){
+			this.posicion=TUMPADO;
+		} else if (getPosicion().equals(TUMPADO)){
 			System.out.println("Ya estoy tumbado");
 		} else {
 			System.out.printf("“Soy %s y no puedo tumbarme porque estoy de pie%n",getNombre());
