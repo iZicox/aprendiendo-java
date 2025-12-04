@@ -11,6 +11,9 @@ public class Pedidos {
 	private Estado estado;
 	private int cantidad;
 	
+	public Pedidos() {
+		
+	}
 	public Pedidos(Color color, Talla talla, int cantidad) {
 		setColor(color);
 		setTalla(talla);

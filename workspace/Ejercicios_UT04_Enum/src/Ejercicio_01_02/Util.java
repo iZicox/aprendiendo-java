@@ -9,14 +9,16 @@ public class Util {
 			try {
 				System.out.println(mensaje);
 				numero = Integer.parseInt(sc.nextLine());
-				if(!(numero > min || numero < max)) {
+				if(numero < min || numero > max) {
 					throw new IllegalArgumentException(String.format("El numero debe estar entre %d y %d.\n",min,max));
 				}
+				return numero;
 			}catch(NumberFormatException e) {
 				System.out.println("Numero no valido.");
 			}catch(IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}
 		}
+		
 	}
 }
