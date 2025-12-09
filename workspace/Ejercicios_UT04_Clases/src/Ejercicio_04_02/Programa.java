@@ -13,10 +13,10 @@ public class Programa {
 		System.out.println(mascota.getPosicion().toString().toLowerCase()+5);
 
 		
-		mascota.
+	
 		String hola = "hola";
 		
-		hola.to
+	
 
 	}
 
