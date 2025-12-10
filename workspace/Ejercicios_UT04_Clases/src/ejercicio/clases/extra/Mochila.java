@@ -18,5 +18,99 @@ hueco. Si llega a 0, el hueco se libera (null).
 ○ Método mostrarInventario(): Muestra el contenido de la mochila:
  */
 public class Mochila {
+	
+	Objeto[] hueco;
+	
+	public Mochila(int tamanio){
+		try {
+			if(tamanio < 0 || tamanio > 10) {
+				 throw new IllegalArgumentException (String.format("Los huecos de la mochila deben estar entre 1 y 10"));
+			} else {
+				this.hueco = new Objeto[tamanio];
+			}
+		}catch(IllegalArgumentException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+		
+		
+	}
+	
+	public Objeto[] getHueco() {
+		return this.hueco;
+	}
+	
+	public void mostrarInventario() {
+		System.out.printf("---------- MOCHILA (%d HUECOS) ----------\n",hueco.length);
+		for(int i = 0; i < hueco.length; i++) {
+			//Hueco 0: [Poción vida] x4 (Max: 5)
+			//Hueco 4: [ VACÍO ]
+			if(hueco[i] == null) {
+				System.out.printf("Hueco %d: [ VACÍO ]\n",i);
+			} else {
+				System.out.printf("Hueco %d: [%s] x%d (Max: %d)\n", i, hueco[i].getNombre(), hueco[i].getCantidad(), hueco[i].getTipo().getCapacidadMaxima());
+			}
+			
+		}
+	}
+	
+	public void add(String nombre, TipoMaterial tipo, int cantidad) {
+		
+		
+		
+		//verificar que la cantidad sea igual o menor a la capacidad maxima
+		int sobrante = 0;
+		int cantidadVerificada = 0;
+		if(cantidad > tipo.getCapacidadMaxima()) {
+			cantidadVerificada = tipo.getCapacidadMaxima();
+			sobrante = cantidad - tipo.getCapacidadMaxima();
+		} else {
+			cantidadVerificada = cantidad;
+		}
+		// creacion del objeto
+		Objeto nuevoObjeto = new Objeto(nombre,cantidadVerificada,tipo);
+		
+		for(int i = 0; i < hueco.length; i++) {
+			
+			if(hueco[i] == null) {
+				System.out.printf("Agregando %d objetos\n", nuevoObjeto.getCantidad());
+				hueco[i] = nuevoObjeto;
+				 // ⭐ SI ESTE ES EL ÚLTIMO HUECO, MOSTRAR MENSAJE
+	            if (i == hueco.length - 1) {
+	                System.out.println("La mochila se llenó.");
+	            }
+				if(sobrante > 0) {
+					add(nombre,tipo,sobrante);
+				}
+				return; 
+			}	
+		}
+	}
+	
+	public void apilar(String nombre, TipoMaterial tipo, int cantidad) {
+		
+		for(int i = 0; i < hueco.length; i++) {
+			if(hueco[i] == null) {
+				add(nombre,tipo,cantidad);
+			}
+			if(hueco[i] != null 
+			&& hueco[i].getTipo() == tipo 
+			&& hueco[i].getCantidad() < hueco[i].getTipo().getCapacidadMaxima()) {
+				System.out.println("Se puede apilar");
+				
+				int cantidadTotal = hueco[i].getCantidad() + cantidad;
+				int sobrante = cantidadTotal - tipo.getCapacidadMaxima();
+				int cantidadVerificada = tipo.getCapacidadMaxima();
+				
+				Objeto nuevoObjeto = new Objeto(nombre,cantidadVerificada,tipo);
+				
+				hueco[i] = new Objeto(nuevoObjeto.getNombre(),nuevoObjeto.getCantidad(),nuevoObjeto.getTipo());
+								
+			}else {
+				System.out.println("No se puede apilar");
+				return;
+			}
+		}
+	}
 
 }
