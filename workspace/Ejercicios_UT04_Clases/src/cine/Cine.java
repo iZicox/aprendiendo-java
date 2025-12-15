@@ -129,7 +129,8 @@ public class Cine {
 		}catch(IllegalStateException e) {
 			System.out.println("Error: " + e.getMessage());
 			return 0;
-		} 
+		}
+		
 	}
 	
 	public void verSala() {
