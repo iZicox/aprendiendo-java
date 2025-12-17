@@ -3,7 +3,7 @@ package mochila;
 public enum TipoMaterial {
 	ARMA(1),
 	POCION(5),
-	RECUSO(20);
+	RECURSO(20);
 	
 	private final int capacidadMaxima;
 	
