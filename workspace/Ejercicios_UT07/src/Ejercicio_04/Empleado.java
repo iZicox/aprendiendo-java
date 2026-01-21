@@ -31,7 +31,7 @@ public abstract class Empleado {
 	
 	@Override
 	public String toString() {
-		return "Nombre del empleado: " + this.nombre;
+		return "Empleado " + this.nombre;
 	}
 	
 	
