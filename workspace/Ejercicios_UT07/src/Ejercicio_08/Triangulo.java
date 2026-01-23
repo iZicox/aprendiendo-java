@@ -10,6 +10,14 @@ public class Triangulo extends Figura {
 	
 	public Triangulo(double ladoA, double ladoB, double ladoC) {
 		super();
+		
+		if (ladoA + ladoB <= ladoC ||
+		    ladoA + ladoC <= ladoB ||
+		    ladoB + ladoC <= ladoA) {
+		    throw new IllegalArgumentException("Los lados no forman un triángulo válido");
+		}
+
+		
 		this.ladoA = ladoA;
 		this.ladoB = ladoB;
 		this.ladoC = ladoC;
@@ -23,8 +31,8 @@ public class Triangulo extends Figura {
 
 	@Override
 	public double area() {
-		double semiPerimetro = (perimetro()/2);
-		return 0;
+		double s = (perimetro()/2);
+		return Math.sqrt(s*(s-this.ladoA)*(s-this.ladoB)*(s-this.ladoC));
 	}
 
 }
