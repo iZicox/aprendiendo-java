@@ -19,9 +19,11 @@ public abstract class Paralelogramo extends Figura {
 	}
 	@Override
 	public double area() {
-		
+		// TODO Auto-generated method stub
 		return this.base * this.altura;
 	}
+	
+	
 	
 }
 	

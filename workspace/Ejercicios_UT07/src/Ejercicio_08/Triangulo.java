@@ -14,7 +14,8 @@ public class Triangulo extends Figura {
 		if (ladoA + ladoB <= ladoC ||
 		    ladoA + ladoC <= ladoB ||
 		    ladoB + ladoC <= ladoA) {
-		    throw new IllegalArgumentException("Los lados no forman un triángulo válido");
+			
+			throw new IllegalArgumentException("Los lados no forman un triángulo válido");
 		}
 
 		
