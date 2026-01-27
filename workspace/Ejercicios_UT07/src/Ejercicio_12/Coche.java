@@ -23,33 +23,35 @@ public class Coche implements Vehiculo {
 	public void frenar(int cuanto) {
 		
 		if (this.velocidadActual == 0) {
-			System.out.println("No puede frenar mas.");
+			System.out.println("Hola, soy un coche. No puede frenar mas.");
 			return;
 		}
 		
 		if((this.velocidadActual - cuanto) < 0) {
 			this.velocidadActual = 0;
-			System.out.println("Vehiculo detenido.");
+			System.out.println("Hola, soy un coche. Vehiculo detenido.");
 			return;
 		}
 		this.velocidadActual -= cuanto;
+		System.out.println("Hola, soy un coche y estoy frenando... Voy a " + this.velocidadActual + " kmh");
 	}
 
 	@Override
 	public void acelerar(int cuanto) {
 		
 		if (this.velocidadActual == VELOCIDAD_MAX) {
-			System.out.println("No puede acelerar mas.");
+			System.out.println("Hola soy un coche. No puedo acelerar mas.");
 			return;
 		}
 		
 		if((this.velocidadActual + cuanto) > VELOCIDAD_MAX) {
 			this.velocidadActual = 120;
-			System.out.println("Velocidad maxima alcanzada.");
+			System.out.println("Hola, soy un coche. Velocidad maxima alcanzada.");
 			return;
 		}
 		this.velocidadActual += cuanto;
-		
+		System.out.println("Hola, soy un coche y estoy acelerando... Voy a " + this.velocidadActual + " kmh");
+
 
 	}
 
@@ -59,13 +61,7 @@ public class Coche implements Vehiculo {
 		return this.numPlazas;
 	}
 
-	@Override
-	public String toString() {
-		if(velocidadActual == VELOCIDAD_MAX) {
-			return String.format("Soy un coche. No puedo acelerar mas.");
-		}
-		return String.format("Soy un coche. Puedo acelerar hasta %d.", VELOCIDAD_MAX);
-	}
+
 
 	
 }

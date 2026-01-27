@@ -14,6 +14,6 @@ public class Lavadora extends Electrodomestico {
 	}
 	
 	public Lavadora(double precio, double pesoKg) {
-		this(precio, pesoKg);
+		super(precio, pesoKg);
 	}
 }
