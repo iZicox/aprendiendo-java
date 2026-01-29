@@ -36,4 +36,6 @@ public abstract class Instrumento {
 		return instrumento.getDificultad() < this.dificultad;
 	}
 	
+	
+	
 }

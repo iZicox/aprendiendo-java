@@ -9,10 +9,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Instrumento> lista = crearInstrumentos(10);
-		System.out.println(lista.size());
+		System.out.println("**********************\n mostrar\n***************************");
+
+		mostrarInstrumento(lista);
+		System.out.println("**********************\n tocar\n***************************");
+
+		tocarInstrumento(lista);
+		System.out.println("**********************\n mas dificil\n***************************");
+		Instrumento masDificil = buscarMasDificil(lista);
+		
+		System.out.println(masDificil.toString());
+		
+	}
+	
+	private static void mostrarInstrumento(ArrayList<Instrumento> lista) {
 		for(Instrumento instrumento : lista) {
-			System.out.println(instrumento.getPropietario());
-			
+			System.out.println(instrumento.toString());
 		}
 	}
 	
@@ -25,6 +37,26 @@ public class Main {
 		for(Instrumento instrumento : lista) {
 			instrumento.parar();
 		}
+	}
+	
+	private static Instrumento buscarMasDificil (ArrayList<Instrumento> lista) {
+		
+		if(lista == null || lista.size() == 0) {
+			return null;
+		}
+		
+		Instrumento masDificil = lista.get(0);
+		
+		for(Instrumento actual: lista) {
+			
+			if(actual.esMasDificil(masDificil)){
+				masDificil = actual;
+			}
+		}
+		
+		return masDificil;
+		
+		
 	}
 	
 	private static ArrayList<Instrumento> crearInstrumentos(int instrumentos) {
