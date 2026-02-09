@@ -1,18 +1,22 @@
 package test;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+import net.datafaker.Faker;
+import net.datafaker.providers.base.Coin;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub		
-		LocalDate fecha1 = LocalDate.of(2000, 6, 30);
-		LocalDate fecha2 = LocalDate.now();
-		Period periodo = Period.between(fecha1, fecha2);
-		System.out.println(periodo.getDays() + "-" + periodo.getMonths() + "-" + periodo.getYears());
-
+		Faker faker = new Faker();
+        
+        // Generando datos específicos
+        Coin moneda = faker.coin();
+        
+        // Ejemplo combinado
+        System.out.println(moneda.toString());
+    
+    
 	}
 
 }
