@@ -11,10 +11,12 @@ public class Main {
 		Faker faker = new Faker();
         
         // Generando datos específicos
-        Coin moneda = faker.coin();
         
         // Ejemplo combinado
-        System.out.println(moneda.toString());
+        for(int i = 0; i < 10; i++) {        	
+	        	String nombre = faker.name().firstName();
+	        	System.out.println(nombre.toString());
+        }
     
     
 	}
