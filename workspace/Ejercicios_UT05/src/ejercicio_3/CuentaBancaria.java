@@ -38,7 +38,12 @@ movimientos.
 o Ingresar: recibe el importe y el concepto y realiza el ingreso en la cuenta.
 	*/
 	public void ingresar(double importe, String concepto) {
-		
+		Movimiento ingreso = new Movimiento(
+										TipoMovimiento.INGRESO, 
+										this.getSaldo(), 
+										importe, 
+										concepto);
+		this.movimientos.add(ingreso);
 	}
 	/*
 o Reembolsar: recibe la cantidad a reembolsar y realiza el reembolso. El
