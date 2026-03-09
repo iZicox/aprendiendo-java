@@ -9,6 +9,7 @@ public class Movimiento {
 	private double importe;
 	private double saldoFinal;
 	private String concepto;
+	
 	public Movimiento(TipoMovimiento tipoMovimiento, double saldoInicial, double importe, String concepto) {
 		super();
 		this.tipoMovimiento = tipoMovimiento;
@@ -18,11 +19,19 @@ public class Movimiento {
 		if(tipoMovimiento.toString().equals("INGRESO") && importe < 0) {
 			throw new IllegalArgumentException("El importe de un ingreso debe ser positivo.");
 		}
+		if(tipoMovimiento.toString().equals("TRANSFERENCIA_A_OTRAS_CUENTAS") && importe > 0) {
+			throw new IllegalArgumentException(
+					"El importe de una transferencia a otras cuentas debe ser negativo.");
+		}
+		if(tipoMovimiento.toString().equals("TRANSFERENCIA_A_FAVOR") && importe < 0) {
+			throw new IllegalArgumentException(
+					"El importe de una transferencia a favor debe ser positivo.");
+		}
 		this.saldoInicial = saldoInicial;
 		this.importe = importe;
 		this.concepto = concepto;
 		this.fechaMovimiento = LocalDateTime.now();
-		this.saldoFinal = saldoInicial - importe;
+		this.saldoFinal = saldoInicial + importe;
 	}
 	
 	public TipoMovimiento getTipoMovimiento() {

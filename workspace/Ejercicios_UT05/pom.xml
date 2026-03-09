@@ -21,5 +21,15 @@
 	    <artifactId>datafaker</artifactId>
 	    <version>2.5.4</version>
 	</dependency>	
+	<dependency>
+      <groupId>com.openai</groupId>
+      <artifactId>openai-java-client-okhttp</artifactId>
+      <version>4.26.0</version>
+    </dependency>
+    <dependency>
+    <groupId>io.github.debajitkumarphukan</groupId>
+    <artifactId>groq-java-sdk</artifactId>
+    <version>1.0.4</version>
+</dependency>
   </dependencies>
 </project>
