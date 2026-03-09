@@ -7,11 +7,14 @@ public abstract class Sala {
 	
 	
 	public Sala(Pelicula pelicula) {
-		this.numSala = proxSala++;
+		this.numSala = proxSala;
+		proxSala++;
 		setPelicula(pelicula);
 	}
 	
-	public void setPelicula(Pelicula pelicual) {
+	public abstract void venderEntrada( int entradas);
+	
+	public void setPelicula(Pelicula pelicula) {
 		if(pelicula == null) {
 			throw new NullPointerException("Pelicula invalida");
 		}
@@ -30,5 +33,6 @@ public abstract class Sala {
 	public String toString() {
 		return "Sala numero " + numSala + "\t" + pelicula.toString();
 	}
+
 
 }
