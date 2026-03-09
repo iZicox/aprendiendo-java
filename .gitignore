@@ -8,3 +8,4 @@ workspace/*/target/
 # workspace/*/.classpath
 # workspace/*/.project
 
+/workspace/openai
