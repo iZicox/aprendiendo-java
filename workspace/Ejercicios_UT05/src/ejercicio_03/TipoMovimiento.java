@@ -1,4 +1,4 @@
-package ejercicio_3;
+package ejercicio_03;
 
 public enum TipoMovimiento {
 	REINTEGRO, 
