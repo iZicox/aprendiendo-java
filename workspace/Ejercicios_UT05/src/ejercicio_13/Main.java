@@ -69,7 +69,7 @@ public class Main {
 					if(!ocupados.contains(personaje)){
 						// agregamos el personaje al set
 						ocupados.add(personaje);
-					}
+					} 
 				} else {
 					// si es mafalda
 					if(mafaldaEnEspera == 0){
