@@ -1,9 +1,12 @@
 package juegoImpostor;
 
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class ejercicio_139 {
 	
@@ -39,27 +42,83 @@ Salida de ejemplo
 513 - 153 - 153 -> no cubifinito.
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int numero = 1234;
+	public static void main(String[] args) {		
+		LinkedList<Integer> lista = new LinkedList<>(List.of(1,10,1243,513));
 		
 		
+		Iterator<Integer> it = lista.iterator();
+		while(it.hasNext()) {
+			
+			boolean flag = false;
+			int current = it.next();
+			
+			while(!flag) {
+				System.out.print(current);
+				int temp = cubifinito(current);
+				
+				if(temp == 1 || temp == current) {
+					flag = true;
+					current = temp;
+					System.out.print(" - " + temp);
+				} else {
+					System.out.print(" - ");
+					current = temp;
+					flag = false;
+				}
+			}
+			if(current == 1) {
+				System.out.print(" -> cubifinito\n");
+			} else {
+				System.out.println(" -> No cubifinito");
+			}
+		}
+		
+	
+
+	}
+	
+public static int cubifinito(int numero) {
 		
 		Deque<Integer> lista = new LinkedList<Integer>(descomponerNumero(numero));
-		System.out.println(lista);
 		
 		Iterator<Integer> it = lista.iterator();
 		Integer resultado = 0;
 		while(it.hasNext()) {
 			Integer n = it.next();
-			Integer m = n*n;
-			resultado += m;
+			resultado += (int) Math.pow(n,3);
 		}
 		
-		System.out.println(resultado);
+		return resultado;
+	}
+	
+	
+	
+	public static int cubifinitoRecursivo(int numero) {
+		return cubifinitoRecursivo(numero, new HashSet<>());
+	}
+	
+	public static int cubifinitoRecursivo(int numero, Set<Integer> vistos) {
 		
+		if(numero == 1) {
+			return 1;
+		}
 		
-
+		if(vistos.contains(numero)) {
+			return numero;
+		}
+		
+		vistos.add(numero);
+		
+		Deque<Integer> lista = new LinkedList<Integer>(descomponerNumero(numero));
+		
+		Iterator<Integer> it = lista.iterator();
+		Integer resultado = 0;
+		while(it.hasNext()) {
+			Integer n = it.next();
+			resultado += (int) Math.pow(n,3);
+		}
+		
+		return cubifinitoRecursivo(resultado,vistos);
 	}
 	
 	/**
