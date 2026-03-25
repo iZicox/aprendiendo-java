@@ -96,9 +96,11 @@ public class Main17 {
 				break;
 			case 2:
 				/**
-				 * Listar pacientes por especialidad: Solicita una especialidad al usuario y muestra todos
-los pacientes en espera para esa consulta, ordenados por prioridad (de más urgente a
-menos urgente y por fecha/hora de llegada).
+				 * Listar pacientes por especialidad: Solicita una especialidad 
+				 * al usuario y muestra todos
+				 * los pacientes en espera para esa consulta, 
+				 * ordenados por prioridad (de más urgente a
+				 * menos urgente y por fecha/hora de llegada).
 				 */
 				enumMenu(especialidadArray);
 				esp = leerEntero(in, "Elige una opcion: ", 1, 4);
@@ -146,6 +148,12 @@ menos urgente y por fecha/hora de llegada).
 			case 4: // buscar por dni y hacer toString
 				System.out.println("Buscar por DNI");
 				dni = leerCadena(in, "Escribe el DNI: ", 1, 10).toUpperCase();
+				Paciente buscado = buscarPorDni(dni, mapa);
+				if(buscado == null) {
+					System.out.println("Paciente no encontrado");
+				} else {
+					System.out.println("Paciente encontrado\n" + buscado.toString());
+				}
 				
 				
 				break;
@@ -155,6 +163,22 @@ menos urgente y por fecha/hora de llegada).
 			
 		}while(opcion != 0);
 		
+	}
+	
+	private static Paciente buscarPorDni(
+										String dniBuscado, 
+										Map<Especialidad,PriorityQueue<Paciente>> mapa) {
+		
+		for (Map.Entry<Especialidad, PriorityQueue<Paciente>> entry : mapa.entrySet()) {
+			PriorityQueue<Paciente> cola = entry.getValue();
+			
+			for (Paciente p : cola) {
+				if(p.getDni().equals(dniBuscado)) {
+					return p;
+				}
+			}
+		}
+		return null;
 	}
 	
 	private static boolean dniExiste(String dni, Map<Especialidad,PriorityQueue<Paciente>> mapa, Especialidad especialidad) {

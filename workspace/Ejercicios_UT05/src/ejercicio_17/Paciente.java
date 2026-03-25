@@ -3,6 +3,7 @@ package ejercicio_17;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Paciente implements Comparable<Paciente>{
 	private String dni;
@@ -69,6 +70,23 @@ public class Paciente implements Comparable<Paciente>{
 				dni,
 				nombreCompleto,
 				sintomas);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paciente other = (Paciente) obj;
+		return Objects.equals(dni, other.dni);
 	}
 	
 	/*
