@@ -33,7 +33,8 @@ public class Ejercicio_02 {
 					while(result.next()) {
 						String nombre = result.getString("nomemp");
 						String salario = result.getString("salemp");
-						System.out.println(nombre + " \t" + salario);
+						System.out.println(nombre + "(" + nombre.length() + ")" +"\t" + salario);
+						
 						
 					}
 				}
