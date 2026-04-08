@@ -1,42 +1,46 @@
 package ejercicio_17_02;
 
+import java.util.Objects;
 import java.util.PriorityQueue;
 
 public class Test {
+	
+	public static class Persona{
+		private String dni;
+		private String nombre;
+		
+		public  Persona(String dni, String nombre) {
+			this.dni = dni;
+			this.nombre = nombre;
+		}
+		
+		@Override
+		public int hashCode() {
+			return Objects.hash(dni);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Persona other = (Persona) obj;
+			return Objects.equals(dni, other.dni);
+		}
+	}
+	
+
 
 	public static void main(String[] args) {
-		PriorityQueue<Paciente> cola = new PriorityQueue<>();
-
-        // Creamos algunos pacientes de prueba
-        Paciente p1 = new Paciente("111A", Especialidad.GENERAL, Gravedad.MEDIA, "Dolor en el pecho");
-        esperar(1000); // Para diferenciar la hora de llegada
-        Paciente p2 = new Paciente("222B", Especialidad.GENERAL, Gravedad.ALTA, "Fractura abierta");
-        esperar(1000);
-        Paciente p3 = new Paciente("333C", Especialidad.GENERAL, Gravedad.BAJA, "Dolor de cabeza");
-        esperar(1000);
-        Paciente p4 = new Paciente("444D", Especialidad.GENERAL, Gravedad.ALTA, "Arritmia");
-
-        // Añadimos a la cola
-        cola.add(p1);
-        cola.add(p2);
-        cola.add(p3);
-        cola.add(p4);
-
-        System.out.println("Pacientes en orden de prioridad:\n");
-
-        // Extraemos en orden de prioridad
-        while (!cola.isEmpty()) {
-            System.out.println(cola.poll());
-        }
+		
+		Persona p1 = new Persona("123","juan");
+		Persona p2 = new Persona("123","juan");
+		System.err.println(p1.equals(p2));
+	
     }
 
-    // Método auxiliar para espaciar las fechas de llegada
-    private static void esperar(long ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
 
 }
