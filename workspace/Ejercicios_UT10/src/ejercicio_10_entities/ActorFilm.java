@@ -6,6 +6,14 @@ public class ActorFilm implements Comparable<ActorFilm>{
 	//actor_id, film_id
 	private int actorId;
 	private int filmId;
+	
+	
+	
+	public ActorFilm(int actorId, int filmId) {
+		super();
+		this.actorId = actorId;
+		this.filmId = filmId;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(actorId, filmId);

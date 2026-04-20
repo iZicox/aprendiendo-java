@@ -8,6 +8,15 @@ public class Actor implements Comparable<Actor>{
 	private int actorId;
 	private String firstName;
 	private String lastName;
+	
+	
+	
+	public Actor(int actorId, String firstName, String lastName) {
+		super();
+		this.actorId = actorId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	public int getActorId() {
 		return actorId;
 	}
@@ -37,6 +46,13 @@ public class Actor implements Comparable<Actor>{
 		// TODO Auto-generated method stub
 		return Integer.compare(this.actorId, o.getActorId());
 	}
+	@Override
+	public String toString() {
+		return "Actor [actorId=" + actorId + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+	
+	
+	
 	
 	
 

@@ -13,6 +13,15 @@ public class Film implements Comparable<Film> {
 	
 	
 	
+	public Film(int filmId, String title, String description, int releaseYear, int lenght, double rating) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.lenght = lenght;
+		this.rating = rating;
+	}
 	public int getFilmId() {
 		return filmId;
 	}
