@@ -17,10 +17,10 @@ public class Main {
 					        l.NAME as idioma, 
 					        l2.NAME as original, 
 					        f.RATING, 
-					        DESCRIPTION 
+					        f.DESCRIPTION 
 					from film f
 					left join LANGUAGE l on l.LANGUAGE_ID = f.LANGUAGE_ID
-					left join language l2 on l2.LANGUAGE_ID = f.ORIGINAL_LANGUAGE_ID;
+					left join language l2 on l2.LANGUAGE_ID = f.ORIGINAL_LANGUAGE_ID
 					""";
 			try(PreparedStatement psmt = conn.prepareStatement(query)){
 				ResultSet result = psmt.executeQuery();
