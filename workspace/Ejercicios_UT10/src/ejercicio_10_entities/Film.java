@@ -60,6 +60,11 @@ public class Film implements Comparable<Film> {
 		// TODO Auto-generated method stub
 		return Integer.compare(this.filmId, o.getFilmId());
 	}
+	@Override
+	public String toString() {
+		return "Film [filmId=" + filmId + ", title=" + title + ", description=" + description + ", releaseYear="
+				+ releaseYear + ", lenght=" + lenght + ", rating=" + rating + "]";
+	}
 	
 	
 }
