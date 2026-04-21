@@ -48,7 +48,7 @@ public class Actor implements Comparable<Actor>{
 	}
 	@Override
 	public String toString() {
-		return "Actor [actorId=" + actorId + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "("+firstName+")";
 	}
 	
 	

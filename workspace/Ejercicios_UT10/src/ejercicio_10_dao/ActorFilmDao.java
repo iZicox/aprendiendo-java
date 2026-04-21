@@ -2,7 +2,13 @@ package ejercicio_10_dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import ejercicio_10_entities.ActorFilm;
 
 public class ActorFilmDao {
 	private String url;
@@ -17,5 +23,24 @@ public class ActorFilmDao {
 	
 	private Connection getConn() throws SQLException {
 		return DriverManager.getConnection(this.url, this.user, this.password);
+	}
+	
+	public List<ActorFilm> getAll(){
+		List<ActorFilm> actorPelicula = new ArrayList<ActorFilm>();
+		String query = "select * from film_actor";
+		try(Connection conn = getConn()){
+			try(PreparedStatement psmt = conn.prepareStatement(query)){
+				ResultSet result = psmt.executeQuery();
+				while(result.next()) {
+					int idActor = result.getInt(1);
+					int idPelicual = result.getInt(2);
+					actorPelicula.add(new ActorFilm(idActor,idPelicual));
+				}
+				return actorPelicula;
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
 	}
 }

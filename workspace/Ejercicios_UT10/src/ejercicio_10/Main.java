@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 import ejercicio_10_dao.ActorDao;
+import ejercicio_10_dao.ActorFilmDao;
 import ejercicio_10_dao.FilmDao;
 import ejercicio_10_entities.Actor;
+import ejercicio_10_entities.ActorFilm;
 import ejercicio_10_entities.Film;
 
 public class Main {
@@ -42,6 +44,17 @@ public class Main {
 		System.out.println("****************************");
 		
 		System.out.println(filmDao.getById(1).toString());
+		
+		// filmActor dao
+		ActorFilmDao actorFilmDao = new ActorFilmDao(url, user, password);
+		
+		List<ActorFilm> c = actorFilmDao.getAll();
+		
+		for (ActorFilm filmActor : c) {
+			System.out.println(filmActor.toString());		
+		}
+		
+		
 	}
 
 }

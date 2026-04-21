@@ -14,6 +14,24 @@ public class ActorFilm implements Comparable<ActorFilm>{
 		this.actorId = actorId;
 		this.filmId = filmId;
 	}
+	
+	
+	
+	
+	public int getActorId() {
+		return actorId;
+	}
+
+
+
+
+	public int getFilmId() {
+		return filmId;
+	}
+
+
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(actorId, filmId);
@@ -34,6 +52,12 @@ public class ActorFilm implements Comparable<ActorFilm>{
 		// TODO Auto-generated method stub
 		return this.compareTo(o);
 	}
+	@Override
+	public String toString() {
+		return "ActorFilm [actorId=" + actorId + ", filmId=" + filmId + "]";
+	}
+	
+	
 	
 	
 }
