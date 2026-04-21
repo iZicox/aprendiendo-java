@@ -9,11 +9,11 @@ public class Film implements Comparable<Film> {
 	private String description;
 	private int releaseYear;
 	private int lenght;
-	private double rating;
+	private String rating;
 	
 	
 	
-	public Film(int filmId, String title, String description, int releaseYear, int lenght, double rating) {
+	public Film(int filmId, String title, String description, int releaseYear, int lenght, String rating) {
 		super();
 		this.filmId = filmId;
 		this.title = title;
@@ -37,7 +37,7 @@ public class Film implements Comparable<Film> {
 	public int getLenght() {
 		return lenght;
 	}
-	public double getRating() {
+	public String getRating() {
 		return rating;
 	}
 	@Override
