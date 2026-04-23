@@ -42,14 +42,6 @@ public class FilmDao {
 			try(PreparedStatement psmt = conn.prepareStatement(query)){
 				ResultSet result = psmt.executeQuery();
 				while(result.next()) {
-					/*
-				 	private int filmId;
-					private String title;
-					private String description;
-					private int releaseYear;
-					private int lenght;
-					private double rating;
-					 */
 					
 					int id = result.getInt(1);
 					String titulo = result.getString(2);

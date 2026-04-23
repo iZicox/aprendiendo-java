@@ -5,7 +5,7 @@ import ejercicio_10_dao.*;
 import ejercicio_10_entities.*;
 
 public class Mian {
-	public static final String URL = "jdbc:oracle:thin:@localhost:1521/XE";
+	public static final String URL = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 	public static final String USER = "sakila";
 	public static final String PASSWORD = "123";
 	
@@ -44,15 +44,15 @@ public class Mian {
 			setActores.add(actor);
 		}
 		
-		
+		// Recorremos el map
 		for (Map.Entry<Film, Set<Actor>> entry : reportes.entrySet()) {
 			Film key = entry.getKey();
-			Set<Actor> val = entry.getValue();
+			System.out.println("Reporte pelicula: " + key);
 			
-			System.out.println(key.toString()); 
-					// val.toString());
-			
-			
+			for (Actor actoresSet : reportes.get(key)) {
+				System.out.println("- " + actoresSet.toString());
+			}	
+			System.out.println("********************************");
 		}
 
 	}

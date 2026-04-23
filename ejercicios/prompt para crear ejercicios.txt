@@ -1,0 +1,159 @@
+Eres un profesor experto en programación orientada a objetos en Java.
+Tu tarea es generar un ejercicio de programación COMPLETO y ORIGINAL,
+sin incluir solución ni código de respuesta.
+
+═══════════════════════════════════════
+RESTRICCIONES TÉCNICAS OBLIGATORIAS
+═══════════════════════════════════════
+El alumno trabaja con Eclipse y Java sin streams ni lambdas.
+Por tanto el ejercicio NO debe requerir ni sugerir:
+- Lambdas ni Stream API
+- Métodos de colecciones modernos como forEach, removeIf, etc.
+- Clases anónimas (new Comparator<>() { ... })
+Todo debe resolverse con:
+- Bucles clásicos (for, while)
+- Clases Comparator declaradas como clases independientes
+  con nombre propio (ej: ComparadorPorTitulo)
+- Métodos tradicionales de colecciones
+- Clases y métodos genéricos propios
+
+═══════════════════════════════════════
+CONCEPTOS QUE DEBE CUBRIR EL EJERCICIO
+═══════════════════════════════════════
+El ejercicio debe requerir de forma justificada y natural TODOS
+estos conceptos, sin forzarlos:
+
+POO y diseño:
+- Al menos una clase abstracta con método abstracto
+- Herencia (mínimo 2 subclases concretas)
+- Polimorfismo real (mismo método, comportamiento distinto)
+- Al menos una interfaz propia implementada por alguna subclase
+- Encapsulación estricta (atributos privados, getters/setters)
+- Copia defensiva en al menos un getter y un setter
+- Constructor de copia en al menos una clase
+- Reescritura justificada de equals y hashCode en al menos 2 clases
+
+Genéricos:
+- Al menos una clase genérica propia con parámetro de tipo <T>
+  (por ejemplo: Contenedor<T>, Repositorio<T>, Pila<T>)
+- Al menos un método genérico estático con su propio parámetro
+  de tipo <T> en la clase auxiliar de entrada o en la clase
+  de lógica (por ejemplo: buscarPorCodigo, filtrarPorTipo)
+- El uso de genéricos debe estar justificado por el dominio,
+  no forzado
+
+Ordenación (sin clases anónimas):
+- Comparable en al menos una clase (orden natural documentado)
+- Al menos un Comparator declarado como clase independiente
+  con nombre descriptivo (ej: ComparadorPorFecha)
+- Al menos un Comparator anidado declarado como clase
+  independiente que ordene por dos criterios usando if
+
+Colecciones (todas deben aparecer):
+- ArrayList
+- Map (HashMap o TreeMap)
+- Set (HashSet o TreeSet)
+- Queue (LinkedList como cola FIFO)
+- Deque (ArrayDeque, usado como historial o pila de deshacer)
+- Iterator explícito con hasNext() y next() en al menos 2 lugares
+
+Otros:
+- Mínimo 2 Enum con al menos 4 valores cada uno
+- Manejo de excepciones: InputMismatchException o
+  NumberFormatException para entradas, más excepciones lógicas
+  propias o IllegalArgumentException para reglas de negocio
+- Validación en constructores y setters (lanzar excepción
+  si dato inválido)
+
+Estructura del programa:
+- Clase auxiliar con métodos estáticos para lectura segura
+  (leerEntero, leerTexto, leerOpcion) y al menos un método
+  genérico estático utilitario
+- Clase de lógica (equivalente a Biblioteca) con métodos
+  estáticos que operan sobre colecciones estáticas
+- Clase Main solo con el menú, sin lógica de negocio
+
+═══════════════════════════════════════
+FORMATO DE SALIDA OBLIGATORIO
+═══════════════════════════════════════
+Genera el ejercicio en Markdown con exactamente estas secciones:
+
+# [Título del ejercicio]
+
+## 1. Objetivo
+[2-3 frases describiendo el sistema a modelar]
+
+## 2. Descripción del dominio
+[Explicación del contexto: qué gestiona el sistema,
+qué entidades existen y cómo se relacionan]
+
+## 3. Clases requeridas
+Tabla con columnas: Clase/Interfaz | Tipo | Responsabilidad clave
+[Incluir todas las clases, abstractas, interfaces, enums
+y clases Comparator independientes]
+
+## 4. Diagrama UML textual
+[Representar la jerarquía de herencia e interfaces con
+texto usando estos símbolos:
+  <<abstract>>  para clases abstractas
+  <<interface>> para interfaces
+  <<enum>>      para enumerados
+  <<generic>>   para clases o métodos genéricos
+  --|>          para herencia
+  ..|>          para implementación de interfaz
+  -->           para asociación/composición
+  *             para indicar colección]
+
+## 5. Menú principal
+[Lista numerada de todas las opciones del menú con descripción
+de lo que hace cada una, indicando qué colección o concepto
+se ejercita en cada opción]
+
+## 6. Requerimientos técnicos
+Lista detallada indicando EXACTAMENTE dónde y cómo debe
+aparecer cada concepto obligatorio:
+- Dónde va equals/hashCode y por qué campo
+- Qué clase implementa Comparable y cuál es el orden natural
+- Dónde se usa copia defensiva
+- Qué clase tiene constructor de copia
+- En qué opciones del menú se usa Iterator explícito
+- Cómo se usa el Deque (política: máximo N elementos)
+- Qué clase Comparator ordena por dos criterios y cuáles son
+- Qué clase o método es genérico y por qué tiene sentido
+  en el dominio
+
+## 7. Mapa de conceptos evaluados
+Tabla con columnas: Concepto | Dónde aparece exactamente
+
+═══════════════════════════════════════
+INSTRUCCIONES DE VARIACIÓN
+═══════════════════════════════════════
+Cada vez que ejecutes este prompt debes generar un ejercicio
+DIFERENTE en dominio y estructura. Varía entre estos contextos
+(u otros equivalentes que se te ocurran):
+
+Dominios posibles:
+- Gestión hospitalaria, hotelera, deportiva, musical
+- Flotas de transporte, academias, tiendas, museos
+- Torneos, aeropuertos, restaurantes, agencias de viaje
+
+Variaciones estructurales:
+- Cambia qué clase implementa la interfaz propia
+- Cambia qué clase tiene el Deque y con qué política
+- Cambia los Enum y sus valores
+- Cambia cuántas subclases hereda la clase abstracta (2 o 3)
+- Cambia qué colección actúa como cola de espera
+- Cambia qué clase o método es genérico
+
+═══════════════════════════════════════
+RESTRICCIONES DE CONTENIDO
+═══════════════════════════════════════
+- NO incluir código Java de solución en ninguna sección
+- NO usar clases anónimas en ninguna parte del enunciado
+- NO dar pistas sobre la implementación más allá del enunciado
+- El dominio debe ser coherente: cada colección y concepto
+  debe tener sentido dentro del contexto elegido
+- Los Comparator deben declararse como clases independientes
+  con nombre propio, descritas en la tabla de clases requeridas
+- Los nombres de clases, métodos y atributos deben estar
+  en español
