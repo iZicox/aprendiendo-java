@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.ILineaTicket;
+import dao.ILineaTicketDAO;
 import entities.LineaTicket;
 import entities.Producto;
 import entities.Ticket;
 
-public class LineaTicketDAOOracle implements ILineaTicket {
+public class LineaTicketDAOOracle implements ILineaTicketDAO {
 	// int cantidad, double precioVenta, int idProducto, int idTicket, Connection con
 	@Override
 	public LineaTicket crear(Connection con, int cantidad, double precioVenta, Producto producto, long idTicket) throws SQLException {

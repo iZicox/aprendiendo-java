@@ -78,6 +78,28 @@ public class TicketDAOOracle implements ITicketDAO {
 		}
 		return lista;
 	}
+	
+	@Override
+	public List<Ticket> listarAbierto(Connection con) throws SQLException {
+		// TODO Auto-generated method stub
+		String query = "select id, fechahora, ticketcerrado from ticket where ticketcerrado = 'F' order by id asc";
+		List<Ticket> lista = new ArrayList<Ticket>();
+		try(PreparedStatement pstmt = con.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery()){
+			while(rs.next()) {
+				
+				long id = rs.getLong("id");
+				LocalDateTime fechaHora = rs.getTimestamp("fechahora").toLocalDateTime();
+				boolean ticketCerrado = "T".equals(rs.getString("ticketcerrado"));
+				
+				Ticket ticket = new Ticket(id, fechaHora, ticketCerrado, new ArrayList<LineaTicket>());
+				
+				lista.add(ticket);
+			}
+			
+		}
+		return lista;
+	}
 
 	@Override
 	public boolean modificar(Connection con, long id, boolean ticketCerrado)

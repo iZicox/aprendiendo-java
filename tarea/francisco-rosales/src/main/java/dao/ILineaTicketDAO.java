@@ -9,7 +9,7 @@ import entities.LineaTicket;
 import entities.Producto;
 import entities.Ticket;
 
-public interface ILineaTicket {
+public interface ILineaTicketDAO {
 	// crear, buscar, listar, modificar, borrar
 	/**
 	 * Name                                      Null?    Type

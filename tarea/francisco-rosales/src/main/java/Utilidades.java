@@ -81,5 +81,22 @@ public static Double leerDoubleOpcional(Scanner sc, String mensaje) {
             }
         }
     }
+    
+    public static long leerIdProducto(Scanner sc){
+        long numero;
+        while (true){
+            try{
+                System.out.print("Ingresa el id del producto: ");
+                numero = Long.parseLong(sc.nextLine());
+                if (numero > 0){
+                    return numero;
+                }else{
+                    System.out.println("Debe ser un número positivo");
+                }
+            }catch(NumberFormatException e){
+                return -1;
+            }
+        }
+    }
 }
 

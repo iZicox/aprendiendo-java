@@ -1,18 +1,26 @@
 
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
+import dao.ILineaTicketDAO;
 import dao.IProductoDAO;
+import dao.ITicketDAO;
+import dao.impl.LineaTicketDAOOracle;
 import dao.impl.ProductoDAOOracle;
+import dao.impl.TicketDAOOracle;
+import entities.LineaTicket;
 import entities.Producto;
+import entities.Ticket;
 
 public class Programa {
 	
-	// opciones menu
+
 	private static final String [] OPCIONES_MENU_GENERAL = {
 			"Menu inventario",
 			"Menu TPV"
@@ -27,6 +35,8 @@ public class Programa {
 	
     private static Scanner sc = new Scanner(System.in);
     private static IProductoDAO productoDAO = new ProductoDAOOracle();
+    private static ITicketDAO ticketDAO = new TicketDAOOracle();
+    private static ILineaTicketDAO lineaDAO = new LineaTicketDAOOracle();
     // Utiliza aquí el nombre del esquema y contraseña que tú hayas utilizado
     private static final String URL = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 	private static final String USR = "java";
@@ -46,7 +56,7 @@ public class Programa {
         }
     }
     
-    private static void menuGeneral(Connection con) {
+    private static void menuGeneral(Connection con) throws SQLException {
     	int opcion = -1;
     	do {
 			pintarMenu("MENU GENERAL", OPCIONES_MENU_GENERAL);
@@ -61,18 +71,100 @@ public class Programa {
 			}
 		} while (opcion != 0);
     }
+    
+    private static void llenarTicket(Connection con, Ticket ticket) throws SQLException {
+    	try {
+			con.setAutoCommit(false);
+			String cerrarTicket = "";
+			Producto producto = null;
+			do {
+				
+			System.out.println("Dejar vacio para cerrar.");
+			long idProducto = Utilidades.leerIdProducto(sc);
+			producto = productoDAO.buscar(con, idProducto);    					
+				
+				if(producto != null) {    					
+					System.out.println("Producto seleccionado: " + producto.toString());
+					int cantidad = Utilidades.leerEntero(sc, 1, Integer.MAX_VALUE, "Ingresa la cantidad: ");
+					LineaTicket linea = lineaDAO.crear(con, cantidad, producto.getPrecio(), producto, ticket.getId());    	
+					ticket.getLineaTicket().add(linea);
+				} else {
+					cerrarTicket = Utilidades.leerCadena(sc, "Si quieres cerrar el ticket escribe (T) o dejarlo abierto (F): ").toUpperCase().trim();
+					if(cerrarTicket.equals("T")) {
+						ticketDAO.modificar(con, ticket.getId(), true);
+					}
+				}
+			}while(producto != null);
+			con.commit();
+		}catch(SQLException e) {
+			con.rollback(); // por pue me pide un try?
+			System.out.println("Error en la venta: " + e.getMessage());
+		}finally {
+			con.setAutoCommit(true);
+		}
+    }
+    
+    private static void iniciarVenta(Connection con) throws SQLException {
+    		try {
+    			con.setAutoCommit(false);
+    			Ticket nuevoTicket = ticketDAO.crear(con, LocalDateTime.now(), false);
+    			String cerrarTicket = "";
+    			Producto producto = null;
+    			do {
+    				
+    					
+				long idProducto = Utilidades.leerIdProducto(sc);
+				producto = productoDAO.buscar(con, idProducto);    					
+    				
+    				if(producto != null) {    					
+    					System.out.println("Producto seleccionado: " + producto.toString());
+    					int cantidad = Utilidades.leerEntero(sc, 1, Integer.MAX_VALUE, "Ingresa la cantidad: ");
+    					LineaTicket linea = lineaDAO.crear(con, cantidad, producto.getPrecio(), producto, nuevoTicket.getId());    	
+    					nuevoTicket.getLineaTicket().add(linea);
+    				} else {
+    					cerrarTicket = Utilidades.leerCadena(sc, "Si quieres cerrar el ticket escribe (T) o dejarlo abierto (F): ").toUpperCase().trim();
+    					if(cerrarTicket.equals("T")) {
+    						ticketDAO.modificar(con, nuevoTicket.getId(), true);
+    					}
+    				}
+    			}while(producto != null);
+    			con.commit();
+    		}catch(SQLException e) {
+    			con.rollback(); // por pue me pide un try?
+    			System.out.println("Error en la venta: " + e.getMessage());
+    		}finally {
+    			con.setAutoCommit(true);
+    		}
+    }
+    
+    private static void continuarVenta(Connection con) {
+    		try {
+    			List<Ticket> abiertos = ticketDAO.listarAbierto(con);
+    			System.out.println("Lista tickets abiertos");
+    			for (Ticket ticket : abiertos) {
+					System.out.println("- " + ticket.toString());
+				}
+    			long idTicket = Utilidades.leerLongPositivo(sc, "Selecciona el id del ticket: ");
+    			Ticket continuarTicket = ticketDAO.buscar(con, idTicket);
+    			
+    			llenarTicket(con, continuarTicket);
+    			
+    		}catch(SQLException e) {
+    			System.out.println(e.getMessage());
+    		}
+    }
 
-    private static void menuTPV(Connection con) {
+    private static void menuTPV(Connection con) throws SQLException {
     	int opcion = -1;
     	do {
 			pintarMenu("MENU TPV", OPCIONES_MENU_TPV);
 			opcion = Utilidades.leerEntero(sc, 0, 4, "Seleccione una opción: ");
 			switch (opcion) {
 			case 1:
-				
+				iniciarVenta(con);
 				break;
 			case 2:
-				
+				continuarVenta(con);
 				break;
 			case 3:
 				
@@ -83,6 +175,7 @@ public class Programa {
 			}
 		} while (opcion != 0);
     }
+    
     private static void menuInventario(Connection con){
         int opcion;
         do{
@@ -131,8 +224,6 @@ public class Programa {
         System.out.println("0. Salir");
     }
     
-    
-
     private static void buscarProducto(Connection con){
         long id = Utilidades.leerLongPositivo(sc, "Introduzca id del producto: ");
         try{

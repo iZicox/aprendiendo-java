@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
-import dao.ILineaTicket;
+import dao.ILineaTicketDAO;
 import dao.IProductoDAO;
 import dao.ITicketDAO;
 import dao.impl.LineaTicketDAOOracle;
@@ -21,13 +21,15 @@ public class Test {
 		// TODO Auto-generated method stub
 		IProductoDAO productoDao = new ProductoDAOOracle();
 		ITicketDAO ticketDao = new TicketDAOOracle();
-		ILineaTicket lineaDao = new LineaTicketDAOOracle();
+		ILineaTicketDAO lineaDao = new LineaTicketDAOOracle();
 		String user = "java";
 		String pass = "123";
 		String link = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 		
+		Scanner in = new Scanner(System.in);
+		long n = Utilidades.leerLongPositivo(in, "Ingresa el numero");
+		System.out.println(n);
 		try(Connection con = DriverManager.getConnection(link, user, pass)){
-			
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}
