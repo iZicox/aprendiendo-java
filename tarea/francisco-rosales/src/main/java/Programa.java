@@ -150,6 +150,10 @@ public class Programa {
 				}
     			long idTicket = Utilidades.leerLongPositivo(sc, "Selecciona el id del ticket: ");
     			Ticket continuarTicket = ticketDAO.buscar(con, idTicket);
+    			List<LineaTicket> lineas = lineaDAO.listarPorTicketId(con, idTicket);
+    			for (LineaTicket lineaTicket : lineas) {
+				System.out.println("- " + lineaTicket.toString());
+			}
     			
     			llenarTicket(con, continuarTicket);
     			
