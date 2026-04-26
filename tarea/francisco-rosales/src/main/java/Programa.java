@@ -74,6 +74,9 @@ public class Programa {
     
     private static void llenarTicket(Connection con, Ticket ticket) throws SQLException {
     	try {
+    		if(ticket.isTicketCerrado()) {
+    			return;
+    		}
 			con.setAutoCommit(false);
 			String cerrarTicket = "";
 			Producto producto = null;
@@ -88,6 +91,7 @@ public class Programa {
 					int cantidad = Utilidades.leerEntero(sc, 1, Integer.MAX_VALUE, "Ingresa la cantidad: ");
 					LineaTicket linea = lineaDAO.crear(con, cantidad, producto.getPrecio(), producto, ticket.getId());    	
 					ticket.getLineaTicket().add(linea);
+					System.out.println("Linea agregada: " + linea.toString());
 				} else {
 					cerrarTicket = Utilidades.leerCadena(sc, "Si quieres cerrar el ticket escribe (T) o dejarlo abierto (F): ").toUpperCase().trim();
 					if(cerrarTicket.equals("T")) {
@@ -168,7 +172,7 @@ public class Programa {
 	    		Ticket ticketBuscado = ticketDAO.buscar(con, idTicket);
 	    		List<LineaTicket> lineas = lineaDAO.listarPorTicketId(con, ticketBuscado.getId());
 	    		if(!ticketBuscado.isTicketCerrado()) {
-	    			System.out.println("El ticket aun esta abierto.");
+	    			System.out.println("EL TICKET ESTA ABIERTO!!!!");
 	    		}
 	    		System.out.println("*****Ticket*****");
 	    		System.out.println(ticketBuscado.toString());
