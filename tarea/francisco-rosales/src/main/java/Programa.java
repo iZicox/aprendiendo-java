@@ -110,6 +110,10 @@ public class Programa {
     			Ticket nuevoTicket = ticketDAO.crear(con, LocalDateTime.now(), false);
     			String cerrarTicket = "";
     			Producto producto = null;
+    			if(nuevoTicket == null) {
+    				System.out.println("Fallo la creacion del ticket");
+    				return;
+    			}
     			do {
     				
     					
