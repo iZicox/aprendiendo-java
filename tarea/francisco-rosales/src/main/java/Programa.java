@@ -75,6 +75,7 @@ public class Programa {
     private static void llenarTicket(Connection con, Ticket ticket) throws SQLException {
     	try {
     		if(ticket.isTicketCerrado()) {
+    			System.out.println("\nEl ticket seleccionado esta cerrado. No se puede agregar filas.");
     			return;
     		}
 			con.setAutoCommit(false);
