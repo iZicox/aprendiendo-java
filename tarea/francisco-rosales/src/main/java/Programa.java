@@ -153,6 +153,41 @@ public class Programa {
     			System.out.println(e.getMessage());
     		}
     }
+    
+    private static void consultarTicket(Connection con) {
+	    	try {
+	    		long idTicket = Utilidades.leerLongPositivo(sc, "Ingresa el id del ticket a consultar: ");
+	    		Ticket ticketBuscado = ticketDAO.buscar(con, idTicket);
+	    		List<LineaTicket> lineas = lineaDAO.listarPorTicketId(con, ticketBuscado.getId());
+	    		if(!ticketBuscado.isTicketCerrado()) {
+	    			System.out.println("El ticket aun esta abierto.");
+	    		}
+	    		System.out.println("*****Ticket*****");
+	    		System.out.println(ticketBuscado.toString());
+	    		System.out.println("Lineas");
+	    		for (LineaTicket lineaTicket : lineas) {
+	    			System.out.println("- " + lineaTicket.toString());
+			}
+	    		
+	    	}catch(SQLException e) {
+	    		System.out.println();
+	    	}
+    }
+    
+    private static void eliminarTicket(Connection con) {
+	    	try {
+	    		long idTicket = Utilidades.leerLongPositivo(sc, "Escribe el id del ticket a eliminar: ");
+	    		boolean eliminado = ticketDAO.eliminar(con, idTicket);
+	    		if(eliminado) {
+	    			System.out.println("Eliminado existosamente");
+	    		}else {
+	    			System.out.println("Error al eliminar");
+	    		}
+	    	}catch(SQLException e) {
+	    		System.out.println(e.getMessage());
+	    	}
+    		
+    }
 
     private static void menuTPV(Connection con) throws SQLException {
     	int opcion = -1;
@@ -167,10 +202,10 @@ public class Programa {
 				continuarVenta(con);
 				break;
 			case 3:
-				
+				consultarTicket(con);
 				break;
 			case 4:
-				
+				eliminarTicket(con);
 				break;
 			}
 		} while (opcion != 0);
