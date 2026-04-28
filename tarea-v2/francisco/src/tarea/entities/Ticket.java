@@ -1,18 +1,31 @@
 package tarea.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Ticket implements Comparable<Ticket>{
 	private long id;
 	private LocalDateTime fechaHora;
 	private boolean ticketCerrado;
+	private List<LineaTicket> lineaTicket;
 	
 	public Ticket(long id, LocalDateTime fechaHora, boolean ticketCerrado) {
 		super();
 		this.id = id;
 		this.fechaHora = fechaHora;
 		this.ticketCerrado = ticketCerrado;
+		this.lineaTicket = new ArrayList<LineaTicket>();
+	}
+	
+	public Ticket(long id, LocalDateTime fechaHora, boolean ticketCerrado, List<LineaTicket> lineaTicket) {
+		super();
+		this.id = id;
+		this.fechaHora = fechaHora;
+		this.ticketCerrado = ticketCerrado;
+		this.lineaTicket = lineaTicket;
 	}
 
 	public long getId() {
@@ -25,6 +38,10 @@ public class Ticket implements Comparable<Ticket>{
 
 	public boolean isTicketCerrado() {
 		return ticketCerrado;
+	}
+
+	public List<LineaTicket> getLineaTicket() {
+		return lineaTicket;
 	}
 
 	@Override
@@ -47,8 +64,15 @@ public class Ticket implements Comparable<Ticket>{
 	@Override
 	public int compareTo(Ticket o) {
 		// TODO Auto-generated method stub
-		return this.getId;
+		return Long.compare(this.getId(), o.getId());
 	}
+
+	@Override
+	public String toString() {
+		return "Ticket (" + id + ") " + fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " - Estado: " + (ticketCerrado ? "Cerrado" : "Abierto") + ".";
+	}
+
+	
 	
 	
 	

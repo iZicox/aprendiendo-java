@@ -23,6 +23,12 @@ public class Habitacion implements Comparable<Habitacion> {
 		this(numero, planta, tipo, precioNoche, estado);
 		this.id = id;
 	}
+	
+	public Habitacion(long id, Habitacion hab) {
+		this(hab.getNumero(), hab.getPlanta(), hab.getTipo(), hab.getPrecioNoche(), hab.getEstado());
+		this.id = id;
+	}
+		
 
 	public long getId() {
 		return id;

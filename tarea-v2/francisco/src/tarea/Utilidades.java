@@ -81,5 +81,22 @@ public static Double leerDoubleOpcional(Scanner sc, String mensaje) {
             }
         }
     }
+    
+    public static long leerLongOVacio(Scanner sc, String mensaje){
+        long numero;
+        while (true){
+            try{
+                System.out.print(mensaje);
+                numero = Long.parseLong(sc.nextLine());
+                if (numero > 0){
+                    return numero;
+                }else{
+                	 System.out.println("Número no válido");
+                }
+            }catch(NumberFormatException e){
+                return -1;
+            }
+        }
+    }
 }
 
