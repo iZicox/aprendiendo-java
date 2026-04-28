@@ -69,7 +69,7 @@ public class HabitacionDAOOracle implements IHabitacionDAO {
 		// TODO Auto-generated method stub
 		String query = """
 				insert into habitacion( NUMERO, PLANTA, TIPO, PRECIO_NOCHE, ESTADO)
-				values(?,?,?,?,?,?)
+				values(?,?,?,?,?)
 				""";
 		String [] pk = {"ID"};
 		try(PreparedStatement pstmt = con.prepareStatement(query, pk)){
@@ -110,6 +110,7 @@ public class HabitacionDAOOracle implements IHabitacionDAO {
 			pstmt.setString(3, tipo.toString());
 			pstmt.setDouble(4, precio);
 			pstmt.setString(5, estado.toString());
+			pstmt.setLong(6, id);
 			
 			int filas = pstmt.executeUpdate();
 			

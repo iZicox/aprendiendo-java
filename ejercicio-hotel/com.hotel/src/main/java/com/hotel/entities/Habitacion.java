@@ -76,6 +76,13 @@ public class Habitacion implements Comparable<Habitacion> {
 		// TODO Auto-generated method stub
 		return Long.compare(this.id, o.getId());
 	}
+
+	@Override
+	public String toString() {
+		return "Habitacion [id=" + id + ", numero=" + numero + ", planta=" + planta + ", tipo=" + tipo
+				+ ", precioNoche=" + precioNoche + ", estado=" + estado + "]";
+	}
+	
 	
 	
 	
