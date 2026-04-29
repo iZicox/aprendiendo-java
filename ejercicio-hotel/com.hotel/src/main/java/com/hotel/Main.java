@@ -4,16 +4,25 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
+import com.hotel.dao.IClienteDAO;
 import com.hotel.dao.IHabitacionDAO;
+import com.hotel.dao.impl.ClienteDAOOracle;
 import com.hotel.dao.impl.HabitacionDAOOracle;
+import com.hotel.entities.Cliente;
 import com.hotel.entities.Estado;
 import com.hotel.entities.Habitacion;
 import com.hotel.entities.Tipo;
 
 public class Main {
 	private static Scanner sc = new Scanner(System.in);
+	private static final String[] MENU_CLI = {
+			"Alta de nuevos clientes",
+			"Modificar datos de cliente",
+			"Listar todos los clientes"
+	};
 	private static final String[] MENU_HAB = {
 			"Alta de nuevas habitaciones",
 			"Modificar datos de habitaciones",
@@ -21,9 +30,14 @@ public class Main {
 			"Listar todas las habitaciones"
 	};
 	private static final String[] MENU_GENERAL = {
-			"Mantenimiento de habitaciones"
+			"Mantenimiento de habitaciones",
+			"Gestion clientes"
 	};
+	
+	// DAO
 	private static IHabitacionDAO habDao = new HabitacionDAOOracle();
+	private static IClienteDAO cliDao = new ClienteDAOOracle();
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String user = "hotel_java";
@@ -168,13 +182,108 @@ public class Main {
 		} while (op != 0);
 	}
 	
-	private static void menuGeneral(Connection con) {
-		imprimirMenu("MENU GENERAL", MENU_GENERAL);
+	private static void nuevoCliente(Connection con){
+		String dni = Utilidades.leerCadena(sc, "\nIngresa el dni: ");
+		String nombre = Utilidades.leerCadena(sc, "\nIngresa el nombre: ");
+		String telefono = Utilidades.leerCadena(sc, "\nIngresa telefono: ");
+		String email = Utilidades.leerCadena(sc, "\nIngresa email: ");
+		Cliente cliente = new Cliente(dni, nombre, telefono, email);
+		try {
+			Cliente nuevo = cliDao.crear(con, cliente);
+			if(nuevo == null) {
+				System.out.println("\nError al crear cliente");
+			}else {
+				System.out.println("\nCliente creado correctamente");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private static void modificarCliente(Connection con) {
+		long id = Utilidades.leerLongPositivo(sc, "\nIngresa el id del cliente a modificar: ");
+		try {
+			Cliente cli = cliDao.buscar(con, id);
+			if(cli == null) {
+				System.out.println("Id no pertenece a ningun cliente");
+				return;
+			}
+			String dni = Utilidades.leerCadena(sc, "Ingresa dni: ");
+			if(dni.isBlank()) {
+				dni = cli.getDni();
+			}
+			String nombre = Utilidades.leerCadena(sc, "Ingresa nombre: ");
+			if(nombre.isBlank()) {
+				nombre = cli.getNombre();
+			}
+			String telefono = Utilidades.leerCadena(sc, "Ingresa telefono: ");
+			if(telefono.isBlank()) {
+				telefono = cli.getTelefono();	
+			}
+			String email = Utilidades.leerCadena(sc, "Ingresa email: ");
+			if(email.isBlank()) {
+				email = cli.getEmail();
+			}
+			Cliente nuevo = new Cliente(dni, nombre, telefono, email);
+			boolean modificado = cliDao.modificar(con, id, nuevo);
+			if(modificado) {
+				System.out.println("\nModificado correctamente");
+			}else {
+				System.out.println("\nError al modificar");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private static void listarClientes(Connection con) {
+		System.out.println("Lista de clientes hospedados");
+		try {
+			Map<Habitacion, Cliente> lista = cliDao.listar(con);
+			for (Map.Entry<Habitacion, Cliente> entry : lista.entrySet()) {
+				Habitacion key = entry.getKey();
+				Cliente val = entry.getValue();
+				System.out.println("- " + key.toString() + " / " + val.toString());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private static void gestionCliente(Connection con) {
+		/*
+		 * Alta de nuevos clientes
+			Modificar datos de clientes
+			Listar todos los clientes
+		 */
 		int op;
 		do {
+			imprimirMenu("MENU CLIENTES", MENU_CLI);
+			op = Utilidades.leerEntero(sc, 0, 3, "Ingresa una opcion: ");
+			switch (op) {
+			case 1 -> nuevoCliente(con);
+			case 2 -> modificarCliente(con);
+			case 3 -> listarClientes(con);
+			
+			
+			default ->
+			throw new IllegalArgumentException("Unexpected value: " + op);
+			}
+		} while (op != 0);
+		
+	}
+	
+	private static void menuGeneral(Connection con) {
+		int op;
+		do {
+			imprimirMenu("MENU GENERAL", MENU_GENERAL);
 			op = Utilidades.leerEntero(sc, 0, 5, "Ingresa una opcion: ");
 			switch (op) {
 			case 1 -> gestionHabitaciones(con);
+			case 2 -> gestionCliente(con);
 			}
 		} while (op != 0);
 		
