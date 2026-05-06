@@ -9,3 +9,4 @@ workspace/*/target/
 # workspace/*/.project
 
 /workspace/openai
+.opencode/node_modules/
