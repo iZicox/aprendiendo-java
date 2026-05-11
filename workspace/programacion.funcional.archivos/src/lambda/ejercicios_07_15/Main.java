@@ -1,4 +1,4 @@
-package ejercicios_07_15;
+package lambda.ejercicios_07_15;
 
 import java.util.Arrays;
 import java.util.List;
