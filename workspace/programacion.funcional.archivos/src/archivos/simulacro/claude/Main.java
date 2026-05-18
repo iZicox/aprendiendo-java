@@ -1,12 +1,16 @@
 package archivos.simulacro.claude;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -35,8 +39,10 @@ public class Main {
 			List<Libro> lista = new ArrayList<Libro>();
 			
 			File catalogo = new File(System.getProperty("user.home"), "catalogo.txt");
-			File backUpLibros = new File(System.getProperty("user.homne"), "backup_libros.dat");
-			File estadisticas = new File(System.getProperty("user.homne"), "estadisticas.bin");
+			File informeDisponible = new File(System.getProperty("user.home"), "informe_disponibles.txt");
+			File backUpCatalogo = new File(System.getProperty("user.home"), "catalogo_backup.txt");
+			File backUpLibros = new File(System.getProperty("user.home"), "backup_libros.dat");
+			File estadisticas = new File(System.getProperty("user.home"), "estadisticas.bin");
 			
 			if(catalogo.exists()) {
 				System.out.println("existe catalogo");
@@ -120,7 +126,33 @@ Año del libro más antiguo	int
 			System.out.println("Enter");
 			in.nextLine();
 			
+			System.out.println("\ncopia de seguridad del catalogo original");
+			try(BufferedInputStream bis = new BufferedInputStream(new FileInputStream(catalogo));
+					BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(backUpCatalogo))){
+				int b;
+				int cont = 0;
+				while((b = bis.read()) != -1) {
+					bos.write(b);
+					cont++;
+				}
+				System.out.println("Bytes: " + cont);
+				
+			}
 			
+			System.out.println("Enter");
+			in.nextLine();
+			
+			try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(backUpLibros));
+					BufferedWriter bw = new BufferedWriter(new FileWriter(informeDisponible,true))){
+				List<Libro> libros = (ArrayList<Libro>) ois.readObject();
+				List<Libro> disponibles = libros.stream().filter(l -> l.disponible).toList();
+				
+			
+				
+				for (Libro libro : disponibles) {
+					bw.write(libro.toString() + "\n");
+				}
+			}
 			
 		}catch(IOException | ClassNotFoundException e) {
 			e.printStackTrace();

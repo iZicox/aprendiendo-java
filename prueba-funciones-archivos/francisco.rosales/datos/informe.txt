@@ -1,0 +1,48 @@
+INFORME DE VEHÍCULOS
+===========================================
+Matrícula: 1001ABC - Marca: Mercedes - Año de matriculación: 2011 - Carga máxima: 1625,50 kg. - En servicio: S
+Matrícula: 1002ABC - Marca: Scania - Año de matriculación: 2012 - Carga máxima: 1751,00 kg. - En servicio: S
+Matrícula: 1003ABC - Marca: Volvo - Año de matriculación: 2013 - Carga máxima: 1876,50 kg. - En servicio: N
+Matrícula: 1004ABC - Marca: MAN - Año de matriculación: 2014 - Carga máxima: 2002,00 kg. - En servicio: S
+Matrícula: 1005ABC - Marca: Renault - Año de matriculación: 2015 - Carga máxima: 2127,50 kg. - En servicio: S
+Matrícula: 1006ABC - Marca: Iveco - Año de matriculación: 2016 - Carga máxima: 2253,00 kg. - En servicio: N
+Matrícula: 1007ABC - Marca: Mercedes - Año de matriculación: 2017 - Carga máxima: 2378,50 kg. - En servicio: S
+Matrícula: 1008ABC - Marca: Scania - Año de matriculación: 2018 - Carga máxima: 2504,00 kg. - En servicio: S
+Matrícula: 1009ABC - Marca: Volvo - Año de matriculación: 2019 - Carga máxima: 2629,50 kg. - En servicio: N
+Matrícula: 1010ABC - Marca: MAN - Año de matriculación: 2020 - Carga máxima: 2755,00 kg. - En servicio: S
+Matrícula: 1011ABC - Marca: Renault - Año de matriculación: 2021 - Carga máxima: 2880,50 kg. - En servicio: S
+Matrícula: 1012ABC - Marca: Iveco - Año de matriculación: 2022 - Carga máxima: 3006,00 kg. - En servicio: N
+Matrícula: 1013ABC - Marca: Mercedes - Año de matriculación: 2023 - Carga máxima: 3131,50 kg. - En servicio: S
+Matrícula: 1014ABC - Marca: Scania - Año de matriculación: 2024 - Carga máxima: 3257,00 kg. - En servicio: S
+Matrícula: 1015ABC - Marca: Volvo - Año de matriculación: 2010 - Carga máxima: 3382,50 kg. - En servicio: N
+Matrícula: 1016ABC - Marca: MAN - Año de matriculación: 2011 - Carga máxima: 3508,00 kg. - En servicio: S
+Matrícula: 1017ABC - Marca: Renault - Año de matriculación: 2012 - Carga máxima: 3633,50 kg. - En servicio: S
+Matrícula: 1018ABC - Marca: Iveco - Año de matriculación: 2013 - Carga máxima: 3759,00 kg. - En servicio: N
+Matrícula: 1019ABC - Marca: Mercedes - Año de matriculación: 2014 - Carga máxima: 3884,50 kg. - En servicio: S
+Matrícula: 1020ABC - Marca: Scania - Año de matriculación: 2015 - Carga máxima: 4010,00 kg. - En servicio: S
+===========================================
+Total de vehículos procesados: 20
+INFORME DE VEHÍCULOS
+===========================================
+Matrícula: 1001ABC - Marca: Mercedes - Año de matriculación: 2011 - Carga máxima: 1625,50 kg. - En servicio: S
+Matrícula: 1002ABC - Marca: Scania - Año de matriculación: 2012 - Carga máxima: 1751,00 kg. - En servicio: S
+Matrícula: 1003ABC - Marca: Volvo - Año de matriculación: 2013 - Carga máxima: 1876,50 kg. - En servicio: N
+Matrícula: 1004ABC - Marca: MAN - Año de matriculación: 2014 - Carga máxima: 2002,00 kg. - En servicio: S
+Matrícula: 1005ABC - Marca: Renault - Año de matriculación: 2015 - Carga máxima: 2127,50 kg. - En servicio: S
+Matrícula: 1006ABC - Marca: Iveco - Año de matriculación: 2016 - Carga máxima: 2253,00 kg. - En servicio: N
+Matrícula: 1007ABC - Marca: Mercedes - Año de matriculación: 2017 - Carga máxima: 2378,50 kg. - En servicio: S
+Matrícula: 1008ABC - Marca: Scania - Año de matriculación: 2018 - Carga máxima: 2504,00 kg. - En servicio: S
+Matrícula: 1009ABC - Marca: Volvo - Año de matriculación: 2019 - Carga máxima: 2629,50 kg. - En servicio: N
+Matrícula: 1010ABC - Marca: MAN - Año de matriculación: 2020 - Carga máxima: 2755,00 kg. - En servicio: S
+Matrícula: 1011ABC - Marca: Renault - Año de matriculación: 2021 - Carga máxima: 2880,50 kg. - En servicio: S
+Matrícula: 1012ABC - Marca: Iveco - Año de matriculación: 2022 - Carga máxima: 3006,00 kg. - En servicio: N
+Matrícula: 1013ABC - Marca: Mercedes - Año de matriculación: 2023 - Carga máxima: 3131,50 kg. - En servicio: S
+Matrícula: 1014ABC - Marca: Scania - Año de matriculación: 2024 - Carga máxima: 3257,00 kg. - En servicio: S
+Matrícula: 1015ABC - Marca: Volvo - Año de matriculación: 2010 - Carga máxima: 3382,50 kg. - En servicio: N
+Matrícula: 1016ABC - Marca: MAN - Año de matriculación: 2011 - Carga máxima: 3508,00 kg. - En servicio: S
+Matrícula: 1017ABC - Marca: Renault - Año de matriculación: 2012 - Carga máxima: 3633,50 kg. - En servicio: S
+Matrícula: 1018ABC - Marca: Iveco - Año de matriculación: 2013 - Carga máxima: 3759,00 kg. - En servicio: N
+Matrícula: 1019ABC - Marca: Mercedes - Año de matriculación: 2014 - Carga máxima: 3884,50 kg. - En servicio: S
+Matrícula: 1020ABC - Marca: Scania - Año de matriculación: 2015 - Carga máxima: 4010,00 kg. - En servicio: S
+===========================================
+Total de vehículos procesados: 20

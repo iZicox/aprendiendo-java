@@ -1,0 +1,10 @@
+El nombre del viento,Patrick Rothfuss,Fantasia,2007,18.95,true
+1984,George Orwell,Distopia,1949,9.50,false
+Sapiens,Yuval Noah Harari,Historia,2011,22.00,true
+Dune,Frank Herbert,Ciencia Ficcion,1965,14.99,true
+El hobbit,J.R.R. Tolkien,Fantasia,1937,12.50,true
+Cien anios de soledad,Gabriel Garcia Marquez,Realismo Magico,1967,11.00,false
+El problema de los tres cuerpos,Liu Cixin,Ciencia Ficcion,2008,19.90,true
+Homo Deus,Yuval Noah Harari,Historia,2015,21.00,true
+La sombra del viento,Carlos Ruiz Zafon,Misterio,2001,13.75,false
+Fahrenheit 451,Ray Bradbury,Distopia,1953,10.00,true
