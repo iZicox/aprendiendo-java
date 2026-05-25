@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ApirestApplication",
+            "request": "launch",
+            "mainClass": "com.example.apirest.ApirestApplication"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PracticaApplication<practica>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.spring.jpa.practica.PracticaApplication",
+            "projectName": "practica",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
