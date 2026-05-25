@@ -20,7 +20,6 @@ public class ProductoServiceImpl implements ProductoService {
         this.repository = repository;
     }
 
-    @Override
     @Transactional(readOnly = true)
     public List<ProductoDto> listarTodo() {
         return repository.findAll().stream()
