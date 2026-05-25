@@ -14,6 +14,8 @@ public class Producto {
 
     private String nombre;
     private double precio;
+
+	public Producto(){}
     
 	public Producto(Long id, String nombre, double precio) {
 		super();

@@ -15,8 +15,10 @@ public class MainDeMentira {
     public void run(){
         // ejemplo de insertar una registro
         Producto p = new Producto(null, "un producto", 120.50);
-        System.out.println("hola");
+
         repo.save(p);
+        System.out.println("\n\n\n\n");
+        repo.findAll().forEach(System.out::println);
 
     }
 }

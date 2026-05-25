@@ -1,0 +1,10 @@
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Laptop HP', 899.99);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Mouse inalámbrico', 25.50);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Teclado mecánico', 89.00);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Monitor 27"', 349.99);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Audífonos Bluetooth', 59.99);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Webcam HD', 45.00);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Cargador USB-C', 19.99);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Disco SSD 1TB', 129.99);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Hub USB 4 puertos', 35.00);
+insert into producto (id, nombre, precio) values(nextval('producto_seq'), 'Silla ergonómica', 450.00);
